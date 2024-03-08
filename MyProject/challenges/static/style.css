@@ -1,0 +1,38 @@
+html{
+    margin:0;
+}
+body{
+    margin:0;
+    padding:0;
+    background-color: black;
+}
+
+#h1
+{
+    color:white;
+    text-align:center
+}
+p
+{
+    color:white;
+}
+#h2
+{
+    color:white;
+    text-align: center;
+}
+
+a{
+    color:red;
+    text-decoration: none;
+}
+nav{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+header{
+    margin:0;
+    padding:21px;
+    background-color: antiquewhite;
+}

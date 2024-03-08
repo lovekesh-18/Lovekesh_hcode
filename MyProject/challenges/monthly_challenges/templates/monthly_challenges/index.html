@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+My Index Page
+{% endblock %}
+
+{% block static_file %}
+<link rel="stylesheet" href="{% static 'monthly_challenges/challenges.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div id = "d1">
+    <div id="d2">
+<ul>
+{% for month in months %}
+<div class="dc">
+<li><a href="{% url 'month-url-name' month %}">{{month}}</a></li>
+</div>
+{% endfor %}
+</ul>
+</div>
+</div>
+{% endblock %}
+
