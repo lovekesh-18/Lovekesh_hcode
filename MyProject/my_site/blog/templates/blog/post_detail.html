@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+{{post.title}}
+{% endblock %}
+
+{% block content %}
+
+{% include 'blog/includes/nav.html' %}
+<div class="container-fluid">
+    <div class="container bg-primary shadow-lg my-5 p-5" style="border-radius:1.5rem;display:flex;justify-content:space-between;align-items:center;">
+        <div>
+            <h1 class="text-white">{{post.title}}</h1>
+        </div>
+        <div>
+            <img src="{% static 'blog/image/'|add:post.image %}" class="img-thumbnail" alt="..." style="height:11rem;"> 
+            <br>
+            <bold class="text-white">By {{post.author}}</bold>
+            <p class="text-white">Last updated on <time>{{post.date|date:"d M Y"}}</time></p>
+        </div>
+        
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="container shadow-lg" style="border-radius:1.5rem; padding:70px;">
+        <p>{{post.content|linebreaks}}</p>
+      <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit tenetur tempora delectus optio veniam, laudantium sint esse voluptates debitis repellat rem hic fugiat! Ipsam repellendus quibusdam laudantium doloremque nihil perspiciatis, consequatur nemo dolor dolorem.</p>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit tenetur tempora delectus optio veniam, laudantium sint esse voluptates debitis repellat rem hic fugiat! Ipsam repellendus quibusdam laudantium doloremque nihil perspiciatis, consequatur nemo dolor dolorem.</p>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit tenetur tempora delectus optio veniam, laudantium sint esse voluptates debitis repellat rem hic fugiat! Ipsam repellendus quibusdam laudantium doloremque nihil perspiciatis, consequatur nemo dolor dolorem.</p> -->
+    
+    </div>
+</div>
+
+
+{% endblock %}

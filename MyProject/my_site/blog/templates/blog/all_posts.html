@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+My Title
+{% endblock %}
+
+{% block content %}
+ {% include 'blog/includes/nav.html' %}
+
+ <div class="container-fluid">
+    <div class="container py-2 shadow-lg my-5">
+        <div class="py-3">
+            <h1 class="text-center">My Posts</h1>
+        </div>
+        <div class="d-flex justify-content-center align-items-center flex-wrap"> 
+          {% for post in all_posts %}
+              {% include 'blog/includes/post.html' %}
+          {% endfor %}
+            {% comment %} <div class="card m-3" style="width: 18rem;">
+                <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                  <img src="{% static 'blog/image/tree1.jpg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Nature At Its Best</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </a>
+              </div>
+                
+               
+                <div class="card mx-3" style="width: 18rem;">
+                  <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                  <img src="{% static 'blog/image/mountain.jpg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Programming Is Great</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </a>
+                </div>
+  
+              <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                <div class="card mx-3" style="width: 18rem;">
+                  <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                  <img src="{% static 'blog/image/mountains.jpg' %}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Mountain Hiking</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </a>
+                </div>
+
+                <div class="card m-3" style="width: 18rem;">
+                    <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                      <img src="{% static 'blog/image/tree1.jpg' %}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Nature At Its Best</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                    </a>
+                  </div>
+                    
+                   
+                    <div class="card mx-3" style="width: 18rem;">
+                      <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                      <img src="{% static 'blog/image/mountain.jpg' %}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Programming Is Great</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                    </a>
+                    </div>
+      
+                  <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                    <div class="card mx-3" style="width: 18rem;">
+                      <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                      <img src="{% static 'blog/image/mountains.jpg' %}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Mountain Hiking</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div>
+                    </a>
+                    </div>
+
+                    <div class="card m-3" style="width: 18rem;">
+                        <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                          <img src="{% static 'blog/image/tree1.jpg' %}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title text-center">Nature At Its Best</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          </div>
+                        </a>
+                      </div>
+                        
+                       
+                        <div class="card mx-3" style="width: 18rem;">
+                          <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                          <img src="{% static 'blog/image/mountain.jpg' %}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title text-center">Programming Is Great</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          </div>
+                        </a>
+                        </div>
+          
+                      <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                        <div class="card mx-3" style="width: 18rem;">
+                          <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                          <img src="{% static 'blog/image/mountains.jpg' %}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title text-center">Mountain Hiking</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          </div>
+                        </a>
+                        </div>
+
+                        <div class="card m-3" style="width: 18rem;">
+                            <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                              <img src="{% static 'blog/image/tree1.jpg' %}" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title text-center">Nature At Its Best</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              </div>
+                            </a>
+                          </div>
+                            
+                           
+                            <div class="card mx-3" style="width: 18rem;">
+                              <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                              <img src="{% static 'blog/image/mountain.jpg' %}" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title text-center">Programming Is Great</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              </div>
+                            </a>
+                            </div>
+              
+                          <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                            <div class="card mx-3" style="width: 18rem;">
+                              <a href="{% url "post-detail-page" "the-mountains" %}" style="text-decoration:none; color:black;">
+                              <img src="{% static 'blog/image/mountains.jpg' %}" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title text-center">Mountain Hiking</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              </div>
+                            </a>
+                            </div> {% endcomment %}
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
