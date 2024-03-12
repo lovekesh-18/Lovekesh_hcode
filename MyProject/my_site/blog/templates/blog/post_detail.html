@@ -13,11 +13,19 @@
     <div class="container bg-primary shadow-lg my-5 p-5" style="border-radius:1.5rem;display:flex;justify-content:space-between;align-items:center;">
         <div>
             <h1 class="text-white">{{post.title}}</h1>
+            <div class="d-flex">
+                {% for tag in post_tag %}
+                <h6 class="text-white" style="padding:0px 20px 0px 0px;">
+                    {{tag.caption}}
+                </h6>
+                {% endfor %}
+            </div>
         </div>
+        
         <div>
             <img src="{% static 'blog/image/'|add:post.image %}" class="img-thumbnail" alt="..." style="height:11rem;"> 
             <br>
-            <bold class="text-white">By {{post.author}}</bold>
+            <span class="text-white ">By <a href="mailto:{{post.author.email}}" class="text-white font-weight-bold text-decoration-none "> {{post.author}}</a></span>
             <p class="text-white">Last updated on <time>{{post.date|date:"d M Y"}}</time></p>
         </div>
         
