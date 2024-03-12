@@ -12,4 +12,8 @@ Detail Page
 {% else %}
 <p>This book is not best selling book</p>
 {% endif %}
+{% comment %} <p>{{B}}</p> {% endcomment %}
+ {% for book in B %}
+   <p>{{book.author.first_name}}</p>
+{% endfor %}
 {% endblock %}
