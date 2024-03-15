@@ -1,8 +1,12 @@
+from typing import Any
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from .forms import *
 from .models import *
 from django.views import View
+from django.views.generic.base import TemplateView
+from django.views.generic import ListView, DetailView
+from django.views.generic.edit import FormView,CreateView
 # Create your views here.
 
 class ReviewView(View):
@@ -23,10 +27,76 @@ class ReviewView(View):
         return render(request,'reviews/index.html',{
             "form" : form
         })
+    
+
+# Get and Post request
+class NewReviewView(FormView):
+    form_class = ReviewForm
+    template_name = "reviews/index.html"
+    success_url = '/ew'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+    
+# Create View same as that of above
+class NewNewReviewView(CreateView):
+    model = Review
+    form_class = ReviewForm
+    template_name = 'reviews/index.html'
+    success_url = '/show'
+
+
+class TemplateBaseView(TemplateView):
+    template_name = "reviews/show.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print("show")
+        context['message'] = "This Works!"
+        return context
+
+# class AllReviewView(TemplateView):
+#     template_name = "reviews/review_list.html"
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["reviews"] = Review.objects.all()
+#         return context
+    
+class SingleReviewView(TemplateView):
+    template_name = "reviews/single_review.html"
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['review'] = Review.objects.get(id = kwargs['id'])
+        return context
+    
+# Single review
+class SingleReviewDetailView(DetailView):
+    template_name = "reviews/single_review.html"
+    model = Review
 
 
 
-# def index(request):
+
+
+    
+class ReviewListView(ListView):
+    template_name = "reviews/review_list.html"
+    model = Review
+    context_object_name = "reviews"
+
+    def get_queryset(self):
+        base_query = super().get_queryset()
+        data = base_query.filter(rating__lte=9)
+        return data
+    
+
+
+
+
+# def index(request): 
 #     if request.method == "POST":
 #         form = ReviewForm(request.POST)
 #         if form.is_valid():
@@ -40,7 +110,7 @@ class ReviewView(View):
             # return HttpResponseRedirect('/show')
     
         # name = request.POST['name']
-        # if name == "":
+        # if name == ""html:
         #     return render(request,'reviews/index.html',{
         #         "has_error" : True
         #     })

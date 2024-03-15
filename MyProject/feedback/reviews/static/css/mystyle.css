@@ -1,0 +1,30 @@
+.form-cont label
+    {
+        font-weight: bold;
+    }
+    .form-cont ul
+    {
+        padding:0;
+        margin:0;
+    }
+
+    .form-cont ul li
+    {
+        list-style: none;
+    }
+
+    .error li{
+        color:red;
+    }
+    .form-cont input{
+        border-radius:7px;
+    }
+
+    button{
+        margin-top: 1.5rem;
+        width: 7rem;
+        border-radius: 10px;
+        background-color: blue;
+        color:white;
+    }
+   
