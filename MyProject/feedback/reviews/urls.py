@@ -8,6 +8,7 @@ urlpatterns = [
     path('show',show,name="show_time"),
     path('review_all',ReviewListView.as_view()),
     path('template_base',TemplateBaseView.as_view()),
+    path('single_review/favorite',AddFavoriteView.as_view()),
     path('single_review/<int:id>',SingleReviewView.as_view()),
     path('ReviewDetailView/<int:pk>',SingleReviewDetailView.as_view())
 ]
