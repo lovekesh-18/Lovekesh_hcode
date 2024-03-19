@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Read Posts
+{% endblock %}
+
+{% block content %}
+
+{% include 'blog/includes/nav.html' %}
+
+<div class="container-fluid">
+    <div class="container d-flex justify-content-center align-items-center" style="height:50vh;">
+        {% if not has_posts %}
+        <h1 class="text-center">You didn't save any post for later!</h1>
+        {% else %}
+        <div class="card shadow-lg border-primary" style="width:35rem; padding:1rem; border:2px solid">
+            <h1 class="text-center text-primary">Posts</h1>
+        <ul class="" style="list-style: none; padding:0; margin:0px;">
+        {% for post in posts %}
+        <li class="text-center p4" style="padding: 18px; margin: 9px; border-radius:1rem; border:1px solid blue">
+            <a href="{% url 'post-detail-page' post.slug %}" class="" style="text-decoration: none;">{{post.title}}</a>
+        </li>
+        {% endfor %}
+        </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

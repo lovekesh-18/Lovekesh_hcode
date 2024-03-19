@@ -6,6 +6,29 @@
 {{post.title}}
 {% endblock %}
 
+{% block style %}
+<style>
+ #id_user_name
+ {
+    width:100%;
+ }
+ #id_user_email
+ {
+    width: 100%;
+ }
+ #id_user_text
+ {
+    width:100%;
+ }
+ .btn-transparent{
+    color:white;
+ }
+ .btn-transparent:hover{
+    background-color:white;
+    color:black;
+ }
+</style>
+{% endblock %}
 {% block content %}
 
 {% include 'blog/includes/nav.html' %}
@@ -20,10 +43,20 @@
                 </h6>
                 {% endfor %}
             </div>
+            <form action="{% url 'read-later' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="post_id" value="{{post.id}}">
+                {% if save_post %}
+                <button class="p-2 btn btn-transparent" style="border:1px solid white;">Delete Read Later</button>
+                {% else %}
+                <button class="p-2 btn btn-transparent" style="border:1px solid white;">Read Later</button>
+                {% endif %}
+            </form>
         </div>
         
         <div>
-            <img src="{% static 'blog/image/'|add:post.image %}" class="img-thumbnail" alt="..." style="height:11rem;"> 
+            {% comment %} <img src="{% static 'blog/image/'|add:post.image %}" class="img-thumbnail" alt="..." style="height:11rem;">  {% endcomment %}
+            <img src="{{post.image.url}}" class="img-thumbnail" alt="..." style="height:11rem;">
             <br>
             <span class="text-white ">By <a href="mailto:{{post.author.email}}" class="text-white font-weight-bold text-decoration-none "> {{post.author}}</a></span>
             <p class="text-white">Last updated on <time>{{post.date|date:"d M Y"}}</time></p>
@@ -39,6 +72,37 @@
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit tenetur tempora delectus optio veniam, laudantium sint esse voluptates debitis repellat rem hic fugiat! Ipsam repellendus quibusdam laudantium doloremque nihil perspiciatis, consequatur nemo dolor dolorem.</p>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit tenetur tempora delectus optio veniam, laudantium sint esse voluptates debitis repellat rem hic fugiat! Ipsam repellendus quibusdam laudantium doloremque nihil perspiciatis, consequatur nemo dolor dolorem.</p> -->
     
+    </div>
+</div>
+
+<div class="container-fluid mt-5">
+    <div class="container-lg shadow-lg bg-primary" style="border-radius:1.5rem; padding:70px;">
+        <h1 class="text-center text-primary text-white mb-5">Comments</h1>
+        <ul>
+         {% for comment in comments %}
+         <li class="text-white">
+             <h2>{{comment.user_name}}</h2>
+             <p>{{comment.user_text | linebreaks}}</p>
+         </li>
+         {% endfor %}
+         <ul>
+    
+    </div>
+</div>
+
+
+<div class="container-fluid mt-5">
+    <div class="container-lg shadow-lg" style="border-radius:1.5rem; padding:70px;">
+        <h1 class="text-center text-primary mb-5">Your Comment</h1>
+        <div class="d-flex justify-content-center align-items-center">
+         <form action=""  method="post">
+            {% csrf_token %}
+            {% for fm in form %}
+               <div class="mb-3">{{fm.label_tag}} <br>{{fm}}<br> <small class="text-danger">{{fm.errors | striptags}}</small></div> 
+            {% endfor %}
+            <input class="btn btn-primary" type="submit">
+         </form>
+        </div>
     </div>
 </div>
 

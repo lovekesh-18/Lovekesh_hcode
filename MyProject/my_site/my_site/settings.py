@@ -125,6 +125,9 @@ STATIC_URL = '/static/'
 # ]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'blog' ,'static')
 
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+
 
 # Your custom 404 handler view
 # handler404 = 'myapp.views.custom_404_view'

@@ -1,7 +1,8 @@
 {% load static %}
 <div class="card m-3" style="width: 18rem;">
     <a href="{% url "post-detail-page" post.slug %}" style="text-decoration:none; color:black;">
-      <img src="{% static 'blog/image/'|add:post.image %}" class="card-img-top" alt="...">
+      {% comment %} <img src="{% static 'blog/image/'|add:post.image %}" class="card-img-top" alt="..."> {% endcomment %}
+      <img src="{{post.image.url}}" class="card-img-top" alt="..."> 
       <div class="card-body">
         <h5 class="card-title text-center">{{post.title}}</h5>
         <p class="card-text">{{post.excerpt}}</p>
